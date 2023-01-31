@@ -2,32 +2,27 @@ from django.shortcuts import render, redirect
 
 from django.http import HttpResponse
 
-
+from django.shortcuts import get_object_or_404
+import app.models
 
 # Create your views here.
 
 def index(request):
-
     # return HttpResponse('Hello from Python!')
-
     return render(request, "index.html")
 
 
-
 def epk(request):
-
     return render(request, "epk.html")
 
 
-
-def lnk(request, name):
-
-    if name == "bathe":
-
-        return redirect("https://distrokid.com/hyperfollow/jaxsen/bathe")
-
+def lnk(request, short_url):
+    obj = get_object_or_404(app.models.Lnk, short_url=short_url)
+    if obj:
+        obj.views += 1
+        obj.save()
+        return redirect(obj.long_url)
     else:
-
         return index(request)
 
 
