@@ -13,6 +13,6 @@ urlpatterns = [
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
-    path('a/<str:short_url>/', views.lnk)
+    path('lnk/<str:short_url>/', views.lnk)
 ]
 
