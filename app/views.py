@@ -26,3 +26,16 @@ def lnk(request, short_url):
         return index(request)
 
 
+def songlnk(request, song_name):
+    obj = get_object_or_404(app.models.Song, title=song_name)
+    links = app.models.SongLnk.objects.filter(song=obj.id)
+
+    return render(request, "song.html",
+                  {
+                      'title': song_name,
+                      'links': links,
+                      'cover_art': obj.cover_art,
+                      'desc': obj.desc,
+                  })
+
+

@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Lnk
+from .models import Lnk, Song, SongLnk
 
 # Register your models here.
+admin.site.register(Song)
+admin.site.register(SongLnk)
 admin.site.register(Lnk)
