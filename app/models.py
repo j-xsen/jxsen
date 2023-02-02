@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Song(models.Model):
     title = models.CharField(max_length=32)
+    url = models.CharField(max_length=32, default="ERROR")
     release_date = models.DateField()
     cover_art = models.URLField()
     desc = models.CharField(default="FART BUTT POOP", max_length=360)
