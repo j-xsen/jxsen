@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}{{ title }} - jaxsen{% endblock %}
+
 {% block content %}
 
-<div class="container" style="padding-top:2rem;">
+<div class="container" style="padding-top:2rem;padding-bottom:2rem;">
 
 <div class="card col-10 col-m-8 offset-m-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 offset-1">
 
@@ -18,14 +21,14 @@
 <div class="d-grid gap-3">
     {% for link in links %}
 
-        <button class="btn-outline-dark btn btn-lg btn-block" onclick="window.location.href='{{ link.dest_url }}';">
+        <a class="btn-outline-dark btn btn-lg btn-block" role="button" href="{{ link.dest_url }}">
         {% if link.icon == "music" %}
             <i class="fa-solid fa-music"></i>
             {% else %}
             <i class="fa-brands fa-{{ link.icon }}"></i>
             {% endif %}
             {{ link.name }}
-        </button>
+        </a>
 
 {% endfor %}
 </div>
