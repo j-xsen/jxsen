@@ -157,6 +157,7 @@ cmake-build-*/
 *.iws
 
 *.pyc
+db.sqlite3
 
 # IntelliJ
 out/
