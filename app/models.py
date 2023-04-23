@@ -13,6 +13,15 @@ class Song(models.Model):
         return self.title
 
 
+class Location(models.Model):
+    country = models.CharField(max_length=32, blank=True)
+    region = models.CharField(max_length=32, blank=True)
+    city = models.CharField(max_length=32, blank=True)
+
+    def __str__(self):
+        return self.city + ", " + self.region + ", " + self.country
+
+
 class SongLnk(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
@@ -27,3 +36,16 @@ class Lnk(models.Model):
     long_url = models.URLField(max_length=200)
     short_url = models.CharField(max_length=30)
     views = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.short_url + ' (' + str(self.views) + ')'
+
+
+class LnkLog(models.Model):
+    lnk = models.ForeignKey(Lnk, on_delete=models.CASCADE)
+    ip = models.CharField(max_length=32)
+    location = models.ForeignKey(Location, blank=True, null=True, on_delete=models.SET_NULL)
+    datetime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.lnk.short_url) + ' - ' + str(self.ip)
