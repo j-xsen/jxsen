@@ -60,7 +60,7 @@ def lnk(request, short_url):
 
 
 def songlnk(request, song_name):
-    obj = get_object_or_404(app.models.Song, url=song_name)
+    obj = get_object_or_404(models.Song, url=song_name)
     links = models.SongLnk.objects.filter(song=obj.id)
 
     return render(request, "song.html",
