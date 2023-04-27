@@ -4,10 +4,11 @@ from django.db import models
 # Create your models here.
 class Song(models.Model):
     title = models.CharField(max_length=32)
-    url = models.CharField(max_length=32, default="ERROR")
+    # url = models.CharField(max_length=32, default="ERROR")
     release_date = models.DateField()
-    cover_art = models.URLField()
-    desc = models.CharField(default="FART BUTT POOP", max_length=360)
+    # cover_art = models.URLField()
+    # desc = models.CharField(default="FART BUTT POOP", max_length=360)
+    redirect_url = models.URLField(max_length=200, default="https://jxsen.com/")
 
     def __str__(self):
         return self.title
@@ -48,4 +49,4 @@ class LnkLog(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.lnk.short_url) + ' - ' + str(self.ip)
+        return str(self.lnk) + ' - ' + str(self.ip)
