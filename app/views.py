@@ -16,7 +16,7 @@ def epk(request):
     return render(request, "epk.html")
 
 
-api_key = '452a4d36b207449d93a58afed33f5e4b'
+api_key = '---'
 api_url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=' + api_key
 
 
